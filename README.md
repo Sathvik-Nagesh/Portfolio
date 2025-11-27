@@ -1,6 +1,5 @@
 # Portfolio – Sathvik Nagesh
 
-![Demo Screenshot](https://raw.githubusercontent.com/Sathvik-Nagesh/Portfolio/main/public/og-image.png)
 🚀 **Live Demo:** https://sathvik-v1.vercel.app/
 A sleek, modern, and highly interactive personal portfolio built with **Next.js 14**, **Tailwind CSS**, and a sprinkle of **AI‑powered chat**. The site showcases projects, a résumé, and a playful chatbot that answers questions about the author’s experience.
 

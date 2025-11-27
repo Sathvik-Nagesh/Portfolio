@@ -14,7 +14,7 @@ export const LinkPreview = ({
   className,
   height = "h-60",
 }: LinkPreviewProps) => {
-  const src = `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
+  const src = `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url&waitFor=5000`;
 
   return (
     <div className={cn("relative group w-full", className)}>

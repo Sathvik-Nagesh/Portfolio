@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
+import ReactMarkdown from 'react-markdown';
 
 interface Message {
   id: string;
@@ -153,7 +154,21 @@ export const ChatWidget = () => {
                             onComplete={() => handleAnimationComplete(msg.id)}
                         />
                     ) : (
-                        msg.content
+                        <ReactMarkdown 
+                            components={{
+                                a: ({...props}) => (
+                                    <a 
+                                        {...props} 
+                                        className="text-purple-400 hover:text-purple-300 underline decoration-purple-400/30 hover:decoration-purple-300 transition-colors" 
+                                    />
+                                ),
+                                p: ({...props}) => <p {...props} className="mb-2 last:mb-0" />,
+                                ul: ({...props}) => <ul {...props} className="list-disc list-inside mb-2 last:mb-0" />,
+                                li: ({...props}) => <li {...props} className="mb-1 last:mb-0" />,
+                            }}
+                        >
+                            {msg.content}
+                        </ReactMarkdown>
                     )}
                   </div>
                 </div>

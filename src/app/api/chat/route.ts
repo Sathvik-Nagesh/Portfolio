@@ -77,17 +77,17 @@ RULES:
 - Use emojis occasionally ✨.
 - If asked about projects not listed in detail, refer the user to the Projects page at /projects.
 - Provide clickable Markdown links when mentioning projects or pages (e.g., [Projects](/projects), [Resume](/resume)).
-- If asked about "Contact Me", direct them to the contact form at the bottom of the page or [Contact](/contact).
+- If asked about "Contact Me", direct them to the contact form at the bottom of the page or [Contact](#contact).
 `;
 
     try {
         const completion = await openai.chat.completions.create({
-          model: 'anthropic/claude-3-haiku',
+          model: 'x-ai/grok-4.1-fast:free',
           messages: [
             { role: 'system', content: PORTFOLIO_CONTEXT },
             ...messages
           ],
-          max_tokens: 180, // Limit response length to save credits
+          max_tokens: 340, // Limit response length to save credits
         });
         return NextResponse.json({ content: completion.choices[0].message.content });
     } catch (error: any) {

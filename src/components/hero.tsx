@@ -2,10 +2,15 @@
 
 import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
-import Spline from '@splinetool/react-spline';
+import dynamic from 'next/dynamic';
 import { EncryptedText } from '@/components/ui/encrypted-text';
 import { FloatingDock } from '@/components/ui/floating-dock';
 import { IconBrandGithub, IconBrandLinkedin, IconBrandInstagram, IconMail, IconFileText } from '@tabler/icons-react';
+
+const Spline = dynamic(() => import('@splinetool/react-spline'), {
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-neutral-900/20 animate-pulse rounded-3xl" />,
+});
 
 export const Hero = () => {
   const links = [
@@ -77,12 +82,10 @@ export const Hero = () => {
 
       {/* Right Side: Spline 3D Model */}
       <div className="w-full md:w-1/2 h-[50vh] md:h-full relative z-0">
-        <Suspense fallback={<div className="w-full h-full bg-neutral-900 animate-pulse" />}>
-          <Spline 
-            className="w-full h-full"
-            scene={process.env.NEXT_PUBLIC_SPLINE_SCENE_URL || "https://prod.spline.design/UkWUyqs1alAGkMgX/scene.splinecode"} 
-          />
-        </Suspense>
+        <Spline 
+          className="w-full h-full"
+          scene={process.env.NEXT_PUBLIC_SPLINE_SCENE_URL || "https://prod.spline.design/UkWUyqs1alAGkMgX/scene.splinecode"} 
+        />
       </div>
 
       {/* Floating Dock */}
